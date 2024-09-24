@@ -1,6 +1,7 @@
 from pydantic import BaseModel,EmailStr
 from datetime import datetime
 from typing import Optional
+from pydantic.types import conint
 
 ## used to set criteria for the data to be sent
 class User(BaseModel):
@@ -42,6 +43,10 @@ class Post(PostBase):
     class Config:
         orm_mode = True
 
+
+class PostOut(BaseModel):
+    Post: Post
+    votes: int
     
 
 class Token(BaseModel):
@@ -51,3 +56,8 @@ class Token(BaseModel):
 class TokenData(BaseModel):
     id: Optional[int] = None
 
+
+class Vote(BaseModel):
+    post_id : int
+    dir: conint(le=1)
+    
