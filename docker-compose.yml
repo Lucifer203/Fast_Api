@@ -1,0 +1,61 @@
+# version: "3"
+# services:
+#     api:
+#         build: .
+#         ports: 
+#             - 8000:8000
+#         env_file:
+#             - ./.env
+#         # environment:
+#         #     -DATABASE_HOSTNAME = localhost
+#         #     -DATABASE_PORT = 5432
+#         #     -DATABASE_PASSWORD = Adarsh@123
+#         #     -DATABASE_NAME = FastApi
+#         #     -DATABASE_USERNAME = postgres
+#         #     -SECRET_KEY = 09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
+#         #     -ALGORITHM = HS256
+#         #     -ACCESS_TOKEN_EXPIRE_MINUTES = 30
+#     postgres:
+#              image:
+#              environment:
+#                 - POSTGRES_PASSWORD = hasga@123
+#                 - POSTGRES_DB = FastApi
+#              volumes:
+#                 - postgres-db: /var/lib/postgresql/data
+
+# volumes:
+#     postgres-db:
+
+
+version: "3"
+services:
+  api:
+    build: .
+    ports: 
+      - 8000:8000
+    # env_file:
+    #   - ./.env
+    # Uncomment and update if you want to define environment variables directly here
+    environment:
+      - DATABASE_HOSTNAME=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_PASSWORD=Adarsh@123
+      - DATABASE_NAME=FastApi
+      - DATABASE_USERNAME=postgres
+      - SECRET_KEY=09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+
+  postgres:
+    image: postgres  # Correct image definition
+    environment:
+      - POSTGRES_PASSWORD=Adarsh@123  # No spaces around `=` 
+      - POSTGRES_DB=FastApi
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db:
+
+
+

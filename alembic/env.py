@@ -26,7 +26,7 @@ escaped_db_url_str = db_url_str.replace("%", "%%")
 
 # password = settings.database_password.replace("%","%%")
 config = context.config
-config.set_main_option("sqlachemy.url", escaped_db_url_str)
+config.set_main_option("sqlalchemy.url", escaped_db_url_str)
 
 # config.set_main_option("sqlalchemy.url",f'postgresql://{settings.database_username}:{quote_plus(password)}@{settings.database_hostname}:5432/{settings.database_name}')
 # config.set_main_option("sqlalchemy.url",str(db_url))
